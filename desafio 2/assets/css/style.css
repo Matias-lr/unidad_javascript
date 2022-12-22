@@ -1,0 +1,7 @@
+.borderless {
+    border: none;
+}
+
+.border {
+    border: 2px solid red !important;
+}

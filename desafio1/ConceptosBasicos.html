@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="texto" class="texto" id="texto">
+    <input type="text" name="" class="texto" id="texto1">
+    <input type="text" name="" class="texto" id="texto2">
+    <input type="text" name="" class="texto" id="texto3">
+
+</body>
+<script>
+    let texto = 2
+    var variable = 2
+    const constante = 2
+
+    //camelCase
+    const nombreYApellido = "nombre y apellido"
+
+    //snake_case
+    const nombre_y_apellido = "nombre y apellido"
+
+    //
+    console.log(document.querySelector(".texto"))
+    console.log(document.getElementById("texto"))
+    console.log(document.getElementsByClassName("texto"))
+//funciones
+function alertar(evento, number) {
+    const temperaturaActual = 25;
+    const resultado = 25 * number
+    const input = evento.target.value
+    alert(resultado)
+    console.log(input)
+}
+
+    //lenguaje orientado a eventos
+    /*document.getElementById("texto").addEventListener("input", function() {
+        alert("cambio el texto")
+    })*/
+    document.getElementById("texto").addEventListener("click", function(event) {
+        alertar(event, 3.4)
+    })
+    document.getElementById("texto").addEventListener("change", function(event) {
+        alertar(event, 3.4)
+    })
+
+
+</script>
+</html>

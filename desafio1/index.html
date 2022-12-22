@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .colorCircle{
+            background-color: transparent;
+            border-radius: 100%;
+            width: 25px;
+            height: 25px;
+            display: inline-block;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="./assets/img/blue_lock1.jpg" alt="Card image cap">
+        <div class="card-body">
+            <div class="form-group">
+                <input type="number" class="form-control" id="cantidad" placeholder="Ingresa la cantidad">
+            </div>
+            <div class="form-group">
+                <select class="form-control" id="selectColor">
+                    <option selected disabled>Seleccina una opcion</option>
+                    <option value="black">negro</option>
+                    <option value="brown">cafe</option>
+                    <option value="white">blanco</option>
+                    <option value="pink">rosa</option>
+                </select>
+            </div>
+        </div>
+        <p class="card-text">precio:<span id="precio">4000</span></p>
+        <button type="submit" id="calcularTotal" class="btn btn-primary">comprar</button>
+    </div>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">precio final</th>
+            <th scope="col">cantidad</th>
+            <th scope="col">color</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="precioFinal"></td>
+            <td id="cantidadFinal"></td>
+            <td><span class="colorCircle" id="colorCircle"></span></td>
+          </tr>
+        </tbody>
+      </table>
+</body>
+
+<script>
+    const precio = 4000;
+
+    document.getElementById("calcularTotal").addEventListener("click", function() {
+        const cantidad = document.getElementById("cantidad").value;
+        const color = document.getElementById("selectColor").value;
+
+        const precioFinal = cantidad * precio;
+
+        document.getElementById("precioFinal").innerText = precioFinal
+        document.getElementById("cantidadFinal").innerText = cantidad
+        document.getElementById("colorCircle").style.backgroundColor = color
+    })
+</script>
+</html>

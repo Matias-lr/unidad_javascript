@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-sm-12 col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="./assets/images/asi_tal_cual.png" class="card-img-top" alt="...">
+                    <input type="number" placeholder="ingresa cantidad" max="10" min="0">
+                </div>  
+            </div>
+            <div class="col-sm-12 col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="./assets/images/calilas.png" class="card-img-top" alt="...">
+                    <input type="number" placeholder="ingresa cantidad" max="10" min="0">
+                </div>  
+            </div>
+            <div class="col-sm-12 col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="./assets/images/pancho.png" class="card-img-top" alt="...">
+                    <input type="number" placeholder="ingresa cantidad" max="10" min="0">
+                </div>  
+            </div>
+        </div>
+        <h3>hasta ahora llevas <span id="total">0</span> stickers</h3>
+        <a id="submit" class="btn btn-success text-center text">comprar stickers</a>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script>
+        var total = 0
+
+        function validate(){
+            let maxValue = parseInt(this.getAttribute('max'))
+            let value = parseInt(this.value)
+            if (maxValue < value){
+                event.target.value = 0
+                alert("el valor no puede ser mayor a 10")
+            }
+        }
+        
+        function getTotal(){
+            let value = parseInt(this.value)
+            suma = value + total
+            console.log(total,value)
+            if(suma > 10){
+                this.value = 0
+                console.log(document.getElementById("submit").className)
+                document.getElementById("submit").className = "btn btn-secondary disabled text"
+                alert("la suma supera el maximo a llevar (10)")
+                return
+            }
+            total = suma
+            document.getElementById("submit").className = "btn btn-success text"
+            document.getElementById("total").innerText = total
+        }
+
+        const numberInputs = document.querySelectorAll('input[type=number]');
+        numberInputs.forEach( val => {
+            val.addEventListener('input', validate)
+            val.addEventListener('change', getTotal)
+        })
+        document.getElementById("submit").addEventListener('click', () => {
+            alert(`has comprado ${total} stickers`)
+        })
+    </script>
+</body>
+</html>
