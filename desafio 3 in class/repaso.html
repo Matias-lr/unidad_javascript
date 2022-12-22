@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <p id="hola"> hola </p>
+
+    <script>
+        arrayNumerico = [1,2,3,4]
+
+        var acomulador = 0
+        
+        for (let index = 0; index < arrayNumerico.length; index++) {
+            acomulador = acomulador + arrayNumerico[index]
+        }
+
+        console.log(acomulador)
+        
+        array = [{
+            nombre: "matias"
+        },{
+            nombre:"angelica"
+        }]
+
+        const foreach = array.forEach(element => {
+            return element.nombre
+        });
+
+        const map = array.map(element => {
+            return element.nombre
+        })
+
+        const valorInicial = 0
+
+        const suma = arrayNumerico.reduce((acomulador, valorActual) => acomulador+ valorActual,valorInicial)
+
+        console.log(suma)
+
+        const saludame = () => {
+            alert("hola  a todos")
+        }
+
+        document.getElementById("hola").addEventListener("click",function() {
+            saludame()
+        })
+    </script>
+</body>
+</html>

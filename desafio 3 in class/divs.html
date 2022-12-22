@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box" style="background-color:bisque"></div>
+    <div class="box" style="background-color:aqua"></div>
+    <div class="box" style="background-color:blueviolet"></div>
+    <div class="box"  style="background-color:cadetblue"></div>
+    <div class="box"  style="background-color:red"></div>
+
+    <script>
+        var color
+
+        document.addEventListener("keydown", function(event) {
+            switch(event.key){
+                case "a":
+                    color = "blue"
+                    break
+                case "s":
+                    color = "black"
+                    break
+                case "d":
+                    color = "brown"
+                    break
+                default:
+                    color = null
+                    break
+            }
+            console.log(color)
+        })
+
+        function changeColor(event){
+            if (color != null)
+                event.target.style.backgroundColor = color
+        }
+
+        boxes = document.querySelectorAll("div.box")
+
+        boxes.forEach(element => {
+            element.addEventListener("click", changeColor)
+        })
+    </script>
+</body>
+</html>
