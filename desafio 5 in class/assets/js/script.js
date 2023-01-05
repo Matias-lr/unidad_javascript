@@ -18,17 +18,29 @@ function updateState(){
         <tr>
             <td>${index}</td>
             <td>${task.descripcion}</td>
-            <td> <a class="btn btn-danger" onclick="eliminarTask(${index})">eliminar</a></td>
+            <td><input type="checkbox" onclick="completarTask(${index})" ${task.estado ? "checked" : "hola"}></td>
+            <td><a class="btn btn-danger" onclick="eliminarTask(${index})">eliminar</a></td>
         </tr>
         `
-
-        tasks.innerHTML = tasksHTML
-        console.log(array)
+    
     });
+
+    inputTotal.innerText = array.length
+    arrayFiltrado = array.filter(val => val.estado === true)
+    inputRealizadas.innerText = arrayFiltrado.length
+
+    tasks.innerHTML = tasksHTML
+}
+
+function completarTask(id){
+    array[id].estado = array[id].estado ? false : true
+    console.log(array)
+    updateState()
+    
 }
 
 function eliminarTask(id){
-    array.splice(id, 2)
+    array.splice(id, 1)
     updateState()
 }
 

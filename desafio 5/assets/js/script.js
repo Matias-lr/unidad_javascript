@@ -21,7 +21,6 @@ function updateState(){
     inputRealizadas.innerText = array.filter(val => val.estado === true).length
 
     tasks.innerHTML = tasksHTML
-    console.log(array)
 }
 
 function completarTask(id){
@@ -30,7 +29,6 @@ function completarTask(id){
 }
 
 function eliminarTask(id){
-    console.log(id)
     array.splice(id, 1)
     updateState()
 }
