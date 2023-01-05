@@ -1,0 +1,39 @@
+[
+    {
+        "nombre": "Departamento",
+        "descripcion": "Desde las alturas todo se ve mejor",
+        "src": "./assets/images/descarga.jpg",
+        "cuartos": 3,
+        "metros": 200
+    },{
+        "nombre": "Departamento",
+        "descripcion": "Desde las alturas todo se ve mejor",
+        "src": "./assets/images/descarga.jpg",
+        "cuartos": 2,
+        "metros": 70
+    },{
+        "nombre": "Departamento",
+        "descripcion": "Desde las alturas todo se ve mejor",
+        "src": "./assets/images/descarga.jpg",
+        "cuartos": 5,
+        "metros": 300
+    },{
+        "nombre": "Departamento",
+        "descripcion": "Desde las alturas todo se ve mejor",
+        "src": "./assets/images/descarga.jpg",
+        "cuartos": 1,
+        "metros": 45
+    },{
+        "nombre": "Departamento",
+        "descripcion": "Desde las alturas todo se ve mejor",
+        "src": "./assets/images/descarga.jpg",
+        "cuartos": 2,
+        "metros": 50
+    },{
+        "nombre": "Departamento",
+        "descripcion": "Desde las alturas todo se ve mejor",
+        "src": "./assets/images/descarga.jpg",
+        "cuartos": 1,
+        "metros": 70
+    }
+]

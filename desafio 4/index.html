@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>css gridd</title>
+</head>
+<body>
+    <div class="grid-container">
+        <header class="header box"><h1>Total encontrado: <span id="total"></span> </h1></header>
+        <nav class="sidebar box">
+            <p>cantidad de cuartos</p>
+            <input type="number" id="cuartos">
+            <p>metros cuadrados</p>
+            <br>
+            <div class="metros-cuadrados">
+                <div>
+                    <p>desde</p>
+                    <input type="number" id="m-desde">
+                </div>
+                <div>
+                    <p>hasta</p>
+                    <input type="number" id="m-hasta">
+                </div>
+            </div>
+            <input type="button" value="Buscar" id="buscar">
+        </nav>
+        <section class="main box" id="main">
+        </section>
+    </div>
+<script>
+
+fetch('./assets/js/dptos.json')
+.then(val => val.json())
+.then(dptos => {
+    const sectionMain = document.getElementById("main")
+    const inputCuartos = document.getElementById("cuartos")
+    const inputMetrosDesde = document.getElementById("m-desde")
+    const inputMetrosHasta = document.getElementById("m-hasta")
+    const buttonBuscar = document.getElementById("buscar")
+    const textTotal = document.getElementById("total")
+
+    var total
+
+    function setTotal(array){
+        textTotal.innerText = array.length
+    }
+
+    function alterMain(array){
+        dptosHTML = array.map(val => `
+        <article class="card">
+            <div class="card-img">
+                <img src="${val.src}" alt="pc gamer">
+            </div>
+            <div class="card-body">
+                <h3>nobmre: ${val.nombre}</h3>
+                <p>metro: ${val.metros}</p>
+                <p>cuartos: ${val.cuartos}</p>
+                <p>${val.descripcion}</p>
+                <button>Comprar</button>
+            </div>
+        </article>
+        `)
+        let articles = dptosHTML.join("")
+        main.innerHTML = articles
+    }
+
+    function init(){
+        alterMain(dptos)
+        setTotal(dptos)
+    }
+
+    function filterByRooms(array){
+        numCuartos = inputCuartos.value
+        if(!numCuartos){
+            alert("no rellenaste todos los cuartos!!!")
+            return null
+        }
+        arrayFilter = array.filter(val => val.cuartos === +numCuartos)
+        return arrayFilter
+    }
+
+    function filterByMeters(array){
+        metersDesde = inputMetrosDesde.value
+        metersHasta = inputMetrosHasta.value
+        if(!metersHasta || !metersDesde){
+            alert("no rellenaste todos los campos de metros!!!")
+            return null
+        }
+        arrayFilter = array.filter(val => val.metros >= +metersDesde && val.metros <= +metersHasta)
+        return arrayFilter
+    }
+
+    buttonBuscar.addEventListener('click',function(){
+        finalArray = filterByRooms(dptos) != null ? filterByRooms(dptos) : dptos
+        finalArray = filterByMeters(finalArray) != null ? filterByMeters(finalArray) : finalArray
+        alterMain(finalArray)
+        setTotal(finalArray)
+    })
+
+    init()
+})
+.catch(err => console.log(err))
+
+fetch('https://pokeapi.co/api/v2/pokemon/ditto')
+.then(val => val.json())
+.then(data => 
+{
+    hability = data.abilities[0].ability.name
+    fetch(`https://pokeapi.co/api/v2/ability/${hability}`)
+    .then(val => val.json())
+    .then(data => {
+        pokemon = data.pokemon[0].pokemon.url
+        fetch(pokemon)
+        .then(val => val.json())
+        .then(data =>console.log(data))
+    })
+})
+
+</script>
+</body>
+</html>
