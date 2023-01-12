@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src="" id="pokemon-img" alt="no hay nada" srcset="">
+
+    <script>
+        baseUrl = "https://pokeapi.co/api/v2/"
+        fetch(`${baseUrl}pokemon/ditto`)
+        .then(response => response.json())
+        .then(val => {
+            fetch(val.forms[0].url)
+            .then(response => response.json())
+            .then(val1 => {
+                document.getElementById('pokemon-img').src = val.sprites.front_shiny
+            })
+        })
+    </script>
+
+    <script>
+        baseUrl = "https://pokeapi.co/api/v2/";
+
+        async function getDitto(){
+            pokemon = await fetch(`${baseUrl}pokemon/ditto`)
+            pokemonJson = await pokemon.json()
+            pokemonForms = await fetch(pokemonJson.forms[0].url)
+            pokemonFormsJson = await pokemonForms.json()
+            document.getElementById('pokemon-img').src = pokemonFormsJson.sprites.front_shiny
+        }
+
+        getDitto()
+    </script>
+</body>
+</html>
